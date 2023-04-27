@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <h1>lista</h1>
-        <a href="{[ route('comunas.create') ]}" class="btn btn-success">Add</a>
+        <a href="{{ route('cliente.create') }}" class="btn btn-success">Agregar</a>
         <table class="table">
             <thead>
                 <tr>
@@ -30,9 +30,10 @@
             <tbody>
                 @foreach ($clientes as $cliente)
                     <tr>
-                        <th scope="row">{[ $cliente->comu_codi ]}</th>
-                        <td>{[ $cliente->comu_nomb ]}</td>
-                        <td>{[ $cliente->muni_nomb ]}</td>
+                        <th scope="row">{{ $cliente->id_cliente }}</th>
+                        <td>{{ $cliente->fecha }}</td>
+                        <td>{{ $cliente->nom_empleado }}</td>
+                        <td>{{ $cliente->nom_cliente }}</td>
                         <td>
                             <a href="{[ route('comunas.edit', ['comuna' => $comuna->comu_codi]) ]}" class="btn btn-info">
                                 Edit </a></li>

@@ -22,7 +22,12 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+       /* $clientes = DB::table('tb_cliente')
+            ->orderBy('nom_empleado')
+            ->get();
+        return view('cliente.new', ['clientes' => $clientes]);*/
+        return view("cliente.new");
+        
     }
 
     /**
@@ -30,7 +35,15 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $clientes = new cliente();
+        $clientes-> id_cliente = $request->post('id_cliente');
+        $clientes-> nom_empleado = $request->post('nom_empleado');
+        $clientes-> nom_cliente = $request->post('nom_cliente');
+        $clientes-> fecha = $request->post('fecha');
+        $clientes->save();
+        
+        return redirect()->route("cliente.index");
+        
     }
 
     /**
