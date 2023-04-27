@@ -35,16 +35,18 @@
                         <td>{{ $cliente->nom_empleado }}</td>
                         <td>{{ $cliente->nom_cliente }}</td>
                         <td>
-                            <a href="{[ route('comunas.edit', ['comuna' => $comuna->comu_codi]) ]}" class="btn btn-info">
-                                Edit </a></li>
-
-                            <form action="{[ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) ]}"
-                                method='POST' style="display: inline-block">
-                                @method('delete')
-                                @csrf
-                                <input class="btn btn-danger" type="submit" value="Delete">
-                            </form>
-                        </td>
+                        <form action="{{ route('cliente.edit', $cliente->id_cliente) }}" method="GET">
+      <button class="btn btn-warning btn-sm">
+        <span class="fas fa-user-edit">Editar</span>
+      </button>
+    </form>
+    <td><form action="{{ route('cliente.destroy', $cliente->id_cliente) }}" method="POST" >
+    @csrf 
+    @method('DELETE')
+      <button class="btn btn-danger btn-sm">
+        <span class="fas fa-user-edit">Eliminar</span>
+      </button>
+    </form></td>
                     </tr>
                 @endforeach
             </tbody>

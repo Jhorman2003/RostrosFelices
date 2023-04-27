@@ -9,7 +9,7 @@ class Cliente extends Model
 {
     use HasFactory;
     protected $table = 'tb_cliente';
-    protected $primarykey ='id_cliente';
+    protected $primaryKey ='id_cliente';
     protected $timestamp = false;
 
 }

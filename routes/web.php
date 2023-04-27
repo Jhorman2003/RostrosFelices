@@ -33,5 +33,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
 Route::get('/cliente/create', [ClienteController::class, 'create'])->name('cliente.create');
 Route::post('/store', [ClienteController::class, 'store'])->name('cliente.store');
-
+Route::get('/edit/{id_cliente}', [ClienteController::class, 'edit'])->name('cliente.edit');
+Route::put('/update/{id_cliente}', [ClienteController::class, 'update'])->name('cliente.update');
+Route::delete('/destroy/{id_cliente}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
 require __DIR__.'/auth.php';

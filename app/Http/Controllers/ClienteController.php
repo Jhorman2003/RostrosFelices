@@ -57,17 +57,25 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id_cliente)
     {
-        //
+        $clientes = cliente::find($id_cliente);
+        return view("cliente.actualizar", compact('clientes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $clientes = new cliente();
+        $clientes-> id_cliente = $request->post('id_cliente');
+        $clientes-> nom_empleado = $request->post('nom_empleado');
+        $clientes-> nom_cliente = $request->post('nom_cliente');
+        $clientes-> fecha = $request->post('fecha');
+        $clientes->save();
+        
+        return redirect()->route("cliente.index");
     }
 
     /**
@@ -75,6 +83,8 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $clientes = cliente::find($id);
+        $clientes->delete();
+        return redirect()->route("cliente.index");
     }
 }
